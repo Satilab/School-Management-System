@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Basic High Contrast Theme Variables */
+    html.theme-hc { /* Applied by ThemeContext to <html> */
+      --hc-bg-primary: #000000; /* Page background */
+      --hc-bg-secondary: #1a1a1a; /* Card, modal, input backgrounds */
+      --hc-text-primary: #ffffff; /* Primary text (on dark bg) */
+      --hc-text-secondary: #dddddd; /* Secondary text */
+      --hc-placeholder-text: #bbbbbb; /* Placeholder text */
+      --hc-border-primary: #ffffff; /* Primary border color */
+      --hc-accent-primary: #ffff00; /* Yellow for high visibility actions/highlights */
+      --hc-accent-secondary: #00ffff; /* Cyan for secondary highlights */
+    }
+
+    /* Apply base HC styles to body when html.theme-hc is active */
+    html.theme-hc body {
+      background-color: var(--hc-bg-primary);
+      color: var(--hc-text-primary);
+    }
+
+    /* Utility classes using HC variables (Tailwind custom utilities would be cleaner if not using CDN) */
+    .hc-bg-primary { background-color: var(--hc-bg-primary); }
+    .hc-bg-secondary { background-color: var(--hc-bg-secondary); }
+    .hc-text-primary { color: var(--hc-text-primary); }
+    .hc-text-secondary { color: var(--hc-text-secondary); }
+    .hc-placeholder-text::placeholder { color: var(--hc-placeholder-text); } /* For direct application if needed */
+    .hc-border-primary { border-color: var(--hc-border-primary); }
+    .hc-accent-primary-text { color: var(--hc-accent-primary); } /* Renamed for clarity */
+    .hc-accent-secondary-text { color: var(--hc-accent-secondary); } /* Renamed for clarity */
+    .hc-button-primary { background-color: var(--hc-accent-primary); color: var(--hc-bg-primary); border-color: var(--hc-text-primary); }
+    .hc-button-outline { background-color: transparent; color: var(--hc-text-primary); border-color: var(--hc-text-primary); }
+
+
+    /* Ensure scrollbar visibility in dark/hc themes */
+    .dark ::-webkit-scrollbar, html.theme-hc ::-webkit-scrollbar { width: 8px; }
+    .dark ::-webkit-scrollbar-track, html.theme-hc ::-webkit-scrollbar-track { background: #333; }
+    .dark ::-webkit-scrollbar-thumb, html.theme-hc ::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+    .dark ::-webkit-scrollbar-thumb:hover, html.theme-hc ::-webkit-scrollbar-thumb:hover { background: #777; }
+
+    /* Dynamic Font Size Classes */
+    /* These classes are applied to <html> by App.tsx */
+    html.text-size-sm { font-size: 14px; }
+    html.text-size-md { font-size: 16px; }
+    html.text-size-lg { font-size: 18px; }
+    
+    /* More specific font size application if needed for non-inheriting elements */
+    html.text-size-sm body, html.text-size-sm button, html.text-size-sm input, html.text-size-sm select, html.text-size-sm textarea { font-size: 0.875rem; }
+    html.text-size-md body, html.text-size-md button, html.text-size-md input, html.text-size-md select, html.text-size-md textarea { font-size: 1rem; }
+    html.text-size-lg body, html.text-size-lg button, html.text-size-lg input, html.text-size-lg select, html.text-size-lg textarea { font-size: 1.125rem; }
+
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Enable class-based dark mode
+      theme: {
+        extend: {
+          colors: {
+            'academic-blue': '#2563EB', 
+            'academic-blue-dark': '#1D4ED8', 
+            'accent-yellow': '#F59E0B', 
+            'accent-yellow-dark': '#D97706', 
+            'accent-green': '#10B981', 
+            'accent-green-dark': '#059669', 
+            // HC values are now primarily driven by CSS variables when html.theme-hc is active
+            // These Tailwind color definitions can act as fallbacks or be used by hc utility classes
+            'hc-bg-primary': 'var(--hc-bg-primary)',
+            'hc-bg-secondary': 'var(--hc-bg-secondary)',
+            'hc-text-primary': 'var(--hc-text-primary)',
+            'hc-text-secondary': 'var(--hc-text-secondary)',
+            'hc-border-primary': 'var(--hc-border-primary)',
+            'hc-accent-primary': 'var(--hc-accent-primary)',
+            'hc-accent-secondary': 'var(--hc-accent-secondary)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.2",
+    "recharts": "https://esm.sh/recharts@^3.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.6.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
